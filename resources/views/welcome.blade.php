@@ -20,7 +20,7 @@
         </style>
     </head>
     <body>
-
+        <livewire:contact-form/>
         <livewire:counter />
         <livewire:scripts />
 
