@@ -12,7 +12,16 @@ class ContactForm extends Component
     public $password;
 
     public function submitForm(){
-        
+
+        $this->resetForm();
+
+        session()->flash('success_message','the form was sent!');
+    }
+
+    public function resetForm(){
+        $this->username = "";
+        $this->email = "";
+        $this->password = "";
     }
 
     public function render()
