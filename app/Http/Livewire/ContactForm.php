@@ -11,17 +11,40 @@ class ContactForm extends Component
     public $email;
     public $password;
 
-    public function submitForm(){
+    public $message;
+
+    protected $rules = [
+        'username' => 'required',
+        'email' => 'required',
+        'password' => 'required:min|4',
+
+    ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+    public function submitForm()
+    {
+
+        $data = $this->validate();
 
         $this->resetForm();
 
-        session()->flash('success_message','the form was sent!');
+        $this->message = "succesful form sent";
     }
 
-    public function resetForm(){
+    public function resetForm()
+    {
         $this->username = "";
         $this->email = "";
         $this->password = "";
+    }
+
+    public function closeMessage()
+    {
+        $this->message = "";
     }
 
     public function render()
